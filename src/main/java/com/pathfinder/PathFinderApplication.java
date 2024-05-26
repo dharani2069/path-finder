@@ -26,20 +26,20 @@ public class PathFinderApplication {
         for(int i = 0;i<2;i++) {
 
             System.out.println("provide consumer" + i + " details.");
-            float latitude = in.nextFloat();
-            float longitude = in.nextFloat();
+            double latitude = in.nextDouble();
+            double longitude = in.nextDouble();
             Consumer consumer = new Consumer("consumer"+i, new Location(latitude, longitude));
 
             System.out.println("provide Restaurant" + i + " details.");
-            float latitude11 = in.nextFloat();
-            float longitude11 = in.nextFloat();
+            double latitude11 = in.nextDouble();
+            double longitude11 = in.nextDouble();
             double averageTime = in.nextDouble();
             Restaurant restaurant = new Restaurant(averageTime, "restaurant"+i, new Location(latitude11, longitude11));
             orderList.add(new Order(i, consumer, restaurant));
         }
         System.out.println("provide users current location");
-        float lat = in.nextFloat();
-        float lon = in.nextFloat();
+        double lat = in.nextDouble();
+        double lon = in.nextDouble();
         Location currentLocation = new Location(lat, lon);
 
         PathFinderResponse pathFinderResponse = deliveryService.findOptimalPath(orderList, currentLocation);
